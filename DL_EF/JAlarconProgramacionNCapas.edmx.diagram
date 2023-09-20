@@ -1,0 +1,28 @@
+<?xml version="1.0" encoding="utf-8"?>
+<edmx:Edmx Version="3.0" xmlns:edmx="http://schemas.microsoft.com/ado/2009/11/edmx">
+ <!-- EF Designer content (DO NOT EDIT MANUALLY BELOW HERE) -->
+  <edmx:Designer xmlns="http://schemas.microsoft.com/ado/2009/11/edmx">
+    <!-- Diagram content (shape and connector positions) -->
+    <edmx:Diagrams>
+      <Diagram DiagramId="253846be87714ed594bf967a2b111f57" Name="Diagram1" ZoomLevel="66">
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.Rol" Width="1.5" PointX="0.75" PointY="2.125" />
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.USUARIO" Width="1.5" PointX="3.125" PointY="3.25" />
+        <AssociationConnector Association="JAlarconProgramacionNCapasModel.FK_Usuario_Rol" />
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.Colonia" Width="1.5" PointX="12.125" PointY="1.125" />
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.Direccion" Width="1.5" PointX="9.125" PointY="4.5" />
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.Estado" Width="1.5" PointX="7.625" PointY="1" />
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.Municipio" Width="1.5" PointX="9.875" PointY="1.25" />
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.Pai" Width="1.5" PointX="5.375" PointY="1.375" />
+        <AssociationConnector Association="JAlarconProgramacionNCapasModel.fkColoniaMunicipio" />
+        <AssociationConnector Association="JAlarconProgramacionNCapasModel.fkDireccionColonia" />
+        <AssociationConnector Association="JAlarconProgramacionNCapasModel.fkDireccionUsuario" />
+        <AssociationConnector Association="JAlarconProgramacionNCapasModel.fkEstadoMunicipio" />
+        <AssociationConnector Association="JAlarconProgramacionNCapasModel.fkMunicipioEstado" />
+        <AssociationConnector Association="JAlarconProgramacionNCapasModel.fkPaisEstado" />
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.Area" Width="1.5" PointX="0.75" PointY="9" />
+        <EntityTypeShape EntityType="JAlarconProgramacionNCapasModel.Departamento" Width="1.5" PointX="3" PointY="8.875" />
+        <AssociationConnector Association="JAlarconProgramacionNCapasModel.fkDepartamentoArea" />
+      </Diagram>
+    </edmx:Diagrams>
+  </edmx:Designer>
+</edmx:Edmx>

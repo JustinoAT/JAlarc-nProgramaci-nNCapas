@@ -1,0 +1,26 @@
+﻿@model ML.Producto
+@{
+    ViewBag.Title = "GetProductos";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+}
+
+<h2 class="h3">Productos.</h2>
+<br>
+@foreach (ML.Producto producto in Model.Productos)
+{
+    <div class="col">
+        <div class="col-md-auto">
+
+            <div class="card" style="width: 18rem;">
+                <img class="card-img-top" src="data:image/*;base64,@producto.Imagen" width="300" height="300" style="border-radius:50%;" />
+                <div class="card-body">
+                    <h5 class="card-title">@producto.Nombre</h5>
+                    <p class="card-text">@producto.Descripcion<br>@producto.PrecioUnitario</p>
+                </div>
+            </div>
+
+        </div>
+    </div>
+ }
+ @Scripts.Render("~/bundles/jquery")

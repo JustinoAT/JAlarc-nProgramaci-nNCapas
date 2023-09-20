@@ -1,0 +1,63 @@
+﻿@model ML.Departamento
+@{
+    ViewBag.Title = "Form";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+}
+
+<br>
+<div class="text-center">
+    <h2 class="display-6">Formulario</h2>
+</div>
+<br>
+@using (Html.BeginForm("Form", "Departamento", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+
+    <div class="row">
+        <div class="col-md-3">
+            @Html.HiddenFor(model => model.IdDepartamento)
+
+            @Html.LabelFor(model => model.Nombre)
+            @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control" })
+        </div>
+
+        <div class="col-md-3">
+            @Html.LabelFor(model => model.Area.Nombre)
+            @Html.DropDownListFor(model => model.Area.IdArea, new SelectList(Model.Area.Areas, "IdArea", "Nombre"), "Selecciona un area correspondiente", new { @class = "form-control" })
+
+
+        </div>
+    </div>
+    <br>
+    <div class="text-center">
+        <button id="btnGuardar" class="btn btn-success" type="submit"><i class="fa-solid fa-floppy-disk"></i> Guardar</button>
+        <a id="btnCancelar" class="btn btn-danger" href="@Url.Action("GetAll", "Departamento")"><i class="fa-solid fa-right-from-bracket"></i> Volver</a>
+    </div>
+    <br>
+
+    @Scripts.Render("~/bundles/jquery")
+    <script type="text/javascript">
+        $("#btnGuardar").mouseenter(function () {
+            $("#btnGuardar").addClass("fa-bounce").removeClass("btn-success").mouseout(function () {
+                $("#btnGuardar").addClass("btn-success").removeClass("fa-bounce")
+
+
+
+            })
+
+        });
+
+
+        $("#btnCancelar").mouseenter(function () {
+            $("#btnCancelar").addClass("fa-bounce").removeClass("btn-danger").mouseout(function () {
+                $("#btnCancelar").removeClass("fa-bounce").addClass("btn-danger")
+
+
+
+            })
+
+        });
+
+    </script>
+
+
+}

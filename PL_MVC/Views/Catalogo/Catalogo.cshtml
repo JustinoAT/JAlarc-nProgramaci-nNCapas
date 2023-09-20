@@ -1,0 +1,37 @@
+﻿@model ML.Area
+@{
+    ViewBag.Title = "Catalogo";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+}
+
+<h2>Catalogo</h2>
+
+@foreach (ML.Area area in Model.Areas)
+{
+    <div class="row">
+        <div class="col-md-3">
+            <div class="card" style="width: 18rem;">
+                <div class="card-body">
+                    <h5 class="card-title">@area.Nombre</h5>
+                    <p class="card-text">Con el boton puedes ver todos los productos pertenecientes al area.</p>
+                    <a href="@Url.Action("GetProductos", "Catalogo", new {IdArea = area.IdArea})" class="btn btn-primary">Ver productos.</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
+<div class="row">
+    <div class="col-md-auto">
+        <div class="card" style="width: 18rem;">
+            <div class="card-body">
+                <h5 class="card-title">Todos los productos</h5>
+                <p class="card-text">Con el boton puedes ver todos los productos pertenecientes al area.</p>
+                <a href="@Url.Action("GetProductosTodo", "Catalogo")" class="btn btn-primary">Ver productos.</a>
+            </div>
+        </div>
+    </div>
+    </div>
+
+    @Scripts.Render("~/bundles/jquery")

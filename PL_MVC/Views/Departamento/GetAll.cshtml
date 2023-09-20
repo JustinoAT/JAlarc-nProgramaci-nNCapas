@@ -1,0 +1,125 @@
+﻿@model ML.Departamento
+@{
+    ViewBag.Title = "GetAll";
+    Layout = "~/Views/Shared/_Layout.cshtml";
+    @Scripts.Render("~/bundles/jquery")
+    <link rel="stylesheet" href="https://cdn.datatables.net/1.13.6/css/jquery.dataTables.css" />
+    <script src="https://cdn.datatables.net/1.13.6/js/jquery.dataTables.js"></script>
+
+
+}
+
+<h2>Departamentos</h2>
+<br>
+
+@using (Html.BeginForm("GetAll", "Departamento", FormMethod.Post, new { enctype = "multipart/form-data" }))
+{
+    <div class="container">
+        <table>
+            <tr>
+               <td><a class="btn btn-outline-dark" href="@Url.Action("Form", "Departamento")"><i>Agregar departamento.</i></a></td>
+                <td><h1 style="color:white">...................................</h1></td>
+                <td>
+                    <h2 class="h6">Barra de busqueda</h2>
+                </td>
+                <td>
+
+                    @Html.TextBoxFor(model => model.Nombre, new { @class = "form-control", @placeholder = "Nombre" })
+
+                </td>
+                <td>
+                    @Html.DropDownListFor(model => model.Area.IdArea, new SelectList(Model.Area.Areas, "IdArea", "Nombre"), "Selecciona un area ", new { @class = "form-control", @placeholder = "Area" })
+                </td>
+                <td>
+                    <button class="btn btn-dark" type="submit">Buscar</button>
+                </td>
+            </tr>
+        </table>
+    </div>
+
+}
+
+
+
+
+
+
+
+
+<br>
+<br>
+<div class="table-responsive">
+    <div class="container">
+        <table class="table table-striped table-bordered" id="myTable">
+            <thead>
+                <tr>
+                    <th>Editar</th>
+                    <th>IdDepartamento</th>
+                    <th>Nombre departamento</th>
+                    <th>Nombre area</th>
+                    <th>Borrar</th>
+
+                </tr>
+            </thead>
+    </div>
+    <tbody>
+        @foreach (ML.Departamento departamento in Model.Departamentos)
+        {
+            <tr>
+                <td><a class=" btn-warning" href="@Url.Action("Form", "Departamento", new {IdDepartamento = departamento.IdDepartamento})"><i class="bi bi-vector-pen">Actualizar</i></a></td>
+
+                <td>@departamento.IdDepartamento</td>
+                <td>@departamento.Nombre</td>
+
+
+                @switch (departamento.Area.Nombre)
+                {
+                    case "Alimentos":
+                        <td style="color:green;">@departamento.Area.Nombre</td>
+                        break;
+                    case "Tecnologia":
+                        <td style="color:blueviolet;">@departamento.Area.Nombre</td>
+                        break;
+                }
+
+                <td><a class="btn btn-danger" href="@Url.Action("Delete", "Departamento", new {IdDepartamento = departamento.IdDepartamento})" onclick="return confirm('Seguro que quieres borrar el departamento?')"><i class="fa-solid fa-trash-can"></i></a></td>
+            </tr>
+        }
+    </tbody>
+    </table>
+    <script type="text/javascript">
+        let table = new DataTable('#myTable', {
+            reponsive: true,
+            "lengthMenu": [[5, 10, 15, 20, -1], [5, 10, 15, 20, "Todos"]],
+            searching: false,
+            language: {
+                url: "//cdn.datatables.net/plug-ins/9dcbecd42ad/i18n/Spanish.json",
+            },
+        });
+
+
+        <script type="text/javascript">
+            $("#btnGuardar").mouseenter(function () {
+                $("#btnGuardar").addClass("fa-bounce").removeClass("btn-success").mouseout(function () {
+                    $("#btnGuardar").addClass("btn-success").removeClass("fa-bounce")
+
+
+
+                })
+
+            });
+
+
+            $("#btnCancelar").mouseenter(function () {
+                $("#btnCancelar").addClass("fa-bounce").removeClass("btn-danger").mouseout(function () {
+                    $("#btnCancelar").removeClass("fa-bounce").addClass("btn-danger")
+
+
+
+                })
+
+            });
+
+
+
+    </script>
